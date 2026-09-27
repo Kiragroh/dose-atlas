@@ -1,5 +1,5 @@
 # Preserve original artifact bytes so published hashes are cross-platform stable.
-artifacts/model_card.json -text
-artifacts/dose_calibration.json -text
-artifacts/overview/model_card.json -text
+artifacts/model_card.json -text whitespace=cr-at-eol
+artifacts/dose_calibration.json -text whitespace=cr-at-eol
+artifacts/overview/model_card.json -text whitespace=cr-at-eol
 *.joblib binary
