@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "Please cite this software version and commit. No DOI has been assigned."
+type: software
+title: "Dose Atlas: geometry-based cranial SRS dose surrogate"
+authors:
+  - name: "Dose Atlas contributors"
+version: 0.1.0
+date-released: 2026-09-27
+repository-code: "https://github.com/Kiragroh/dose-atlas"
+url: "https://github.com/Kiragroh/dose-atlas"
+license: MIT
+abstract: "Research source release for exploratory geometry-based cranial single-fraction SRS dose estimation and interactive DICOM visualization. Includes a clearly labelled analytic synthetic demo without trained weights. Not for treatment planning or clinical decision-making."
+keywords:
+  - stereotactic radiosurgery
+  - dose prediction
+  - DICOM
+  - research software

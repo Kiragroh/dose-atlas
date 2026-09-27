@@ -1,0 +1,12 @@
+*
+!*.py
+!requirements-runtime.txt
+!static/
+!static/**
+!docs/
+!docs/**
+!README.md
+!LICENSE
+!CITATION.cff
+!SECURITY.md
+!CHANGELOG.md

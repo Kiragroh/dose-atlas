@@ -1,0 +1,12 @@
+# Direct dependencies as exercised locally on Python 3.13.13.
+# Use this file for the supplied sklearn model (pickle formats are version-sensitive).
+numpy==2.4.4
+scipy==1.17.1
+pydicom==2.4.5
+scikit-learn==1.9.1
+joblib==1.6.0
+matplotlib==3.10.9
+fastapi==0.136.3
+uvicorn==0.46.0
+python-multipart==0.0.27
+httpx==0.28.1

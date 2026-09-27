@@ -1,0 +1,17 @@
+private/
+artifacts/*
+!artifacts/README.md
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.env.*
+*.log
+*.dcm
+*.npz
+*.npy
+*.joblib
+*.sqlite*
+release/
+dist/
