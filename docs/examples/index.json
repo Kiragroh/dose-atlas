@@ -1,0 +1,26 @@
+[
+  {
+    "example": "Example A",
+    "targets": 11,
+    "targets_in_slice": 4,
+    "rx_Gy": 18.0,
+    "fractions": 1,
+    "grid_mm": 1.0,
+    "fold_calibration_scale": 1.03,
+    "method": "patient-held-out HGB, Gaussian sigma 1 mm, nested training-fold scalar",
+    "background": "fixed synthetic CT-like phantom; no patient CT; not anatomical registration",
+    "selection": "descending distinct targets in one axial slice, total targets, slice target area; not selected by accuracy"
+  },
+  {
+    "example": "Example B",
+    "targets": 10,
+    "targets_in_slice": 4,
+    "rx_Gy": 18.0,
+    "fractions": 1,
+    "grid_mm": 1.0,
+    "fold_calibration_scale": 1.04,
+    "method": "patient-held-out HGB, Gaussian sigma 1 mm, nested training-fold scalar",
+    "background": "fixed synthetic CT-like phantom; no patient CT; not anatomical registration",
+    "selection": "descending distinct targets in one axial slice, total targets, slice target area; not selected by accuracy"
+  }
+]

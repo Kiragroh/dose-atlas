@@ -1,6 +1,8 @@
 """Clean source checkout: no private weights, data or default administrator."""
 import io
 import zipfile
+import json
+import hashlib
 import pytest
 from fastapi.testclient import TestClient
 import app as api
@@ -38,9 +40,18 @@ def test_public_source_contains_runtime_dependencies_not_weights():
     for name in ('dose_calibration.py', 'overview_model.py', 'CITATION.cff'):
         assert 'dose-atlas/' + name in names
     assert 'dose-atlas/docs/assets/dose-atlas-banner.png' in names
+    assert 'dose-atlas/scripts/render_plan_comparison.py' in names
     assert not any('/private/' in name or name.endswith(('.joblib', '.npz', '.dcm')) for name in names)
 
 
 def test_no_unconfigured_admin_grant(monkeypatch):
     monkeypatch.setattr(job_queue, 'ADMIN_EMAIL', '')
     assert not job_queue.is_admin({'email': '', 'email_confirmed_at': 'date'})
+
+
+def test_distributed_artifact_manifest_and_calibration_hashes():
+    manifest = json.loads((api.ROOT/'artifacts/MODEL_MANIFEST.json').read_text())
+    for name, expected in manifest['files'].items():
+        assert hashlib.sha256((api.ROOT/'artifacts'/name).read_bytes()).hexdigest() == expected
+    calibration = json.loads((api.ROOT/'artifacts/dose_calibration.json').read_text())
+    assert calibration['model_sha256'] == manifest['files']['model.joblib']

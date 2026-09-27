@@ -9,7 +9,7 @@ date-released: 2026-09-27
 repository-code: "https://github.com/Kiragroh/dose-atlas"
 url: "https://github.com/Kiragroh/dose-atlas"
 license: MIT
-abstract: "Research source release for exploratory geometry-based cranial single-fraction SRS dose estimation and interactive DICOM visualization. Includes a clearly labelled analytic synthetic demo without trained weights. Not for treatment planning or clinical decision-making."
+abstract: "Research software and original trained weights for exploratory geometry-based cranial single-fraction SRS dose estimation and interactive DICOM visualization. DCA, single-isocenter, C-arm/TrueBeam and Brainlab Elements 4.5 development provenance. Includes patient-held-out illustrations with synthetic CT-like backgrounds. Not for treatment planning or clinical decision-making."
 keywords:
   - stereotactic radiosurgery
   - dose prediction

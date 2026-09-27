@@ -10,3 +10,8 @@
 !CITATION.cff
 !SECURITY.md
 !CHANGELOG.md
+!artifacts/
+!artifacts/model.joblib
+!artifacts/model_card.json
+!artifacts/dose_calibration.json
+!artifacts/MODEL_MANIFEST.json

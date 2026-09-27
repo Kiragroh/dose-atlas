@@ -1,0 +1,34 @@
+{
+  "release": "v0.1.0",
+  "license": "MIT",
+  "research_only": true,
+  "distribution": "Original artifacts included with explicit maintainer authorization, 2026-09-27; no retraining or changes to weights.",
+  "development_provenance": {
+    "investigator_supplied": "DCA, single-isocenter, C-arm / TrueBeam, Brainlab Elements 4.5 plans",
+    "dicom_verified": {
+      "plans": 10,
+      "manufacturer": "Brainlab",
+      "manufacturer_model_name": "DosePlanning",
+      "software_versions": "4.5.1.318",
+      "plans_with_exactly_one_isocenter": 10,
+      "dynamic_beams": 154,
+      "gantry_rotation_directions_present": ["CW", "CC", "NONE"]
+    },
+    "limits": "These tags support dynamic rotating single-isocenter plans, but do not independently establish DCA versus VMAT or the TrueBeam machine model. Those descriptors are investigator-supplied. No beam geometry is an inference feature."
+  },
+  "files": {
+    "model.joblib": "b41ed8e7c8d88167ce0fccc6efa0838c53e4416b2d63cc61bb6012c77af9fcb4",
+    "model_card.json": "095512b897436eaa0ae15d31fc5acf0c63a13f696d283a9cbf29351970df62dd",
+    "dose_calibration.json": "3c92f03630043173c47394c06aadb2a8a54bd6f0e891d82fc1e982f9eafb8b93",
+    "overview/distal.joblib": "cf7c8bfcc6e812e959d145fa95e1d52f3298c649c2e5bee7e85041465ee6904b",
+    "overview/model_card.json": "3fa702852042786b9277806680d76a621e4f6df6567b596cc1d81a60954cacda"
+  },
+  "variants": {
+    "near_raw": "All-ten-case HGB deployment model; 35-mm target domain.",
+    "near_regularized": "Near raw followed by Gaussian sigma 1 mm.",
+    "near_calibrated": "Regularized near model multiplied by hash-bound empirical deployment scalar 1.04; standalone GUI option.",
+    "distal": "Experimental separately trained extension; blend 30-45 mm in overview_model.py; not wired into standalone GUI.",
+    "publication_examples": "Cached patient-held-out near HGB, sigma 1 mm and patient-excluding fold-specific calibration; not inference by the all-case deployment model."
+  },
+  "warning": "Joblib files can execute code. Hashes identify files, not trust. No external clinical validation or full-organ safety claim. No source cohort included."
+}

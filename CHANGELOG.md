@@ -7,4 +7,6 @@
 - Added explicitly analytic synthetic demo for installations without weights; patient-case inference still requires a trained model.
 - Removed fixed personal administrator configuration in favor of an explicit environment setting with no default grant.
 - Added methods, model installation/training guide, validation scope, citation metadata and generated synthetic illustrations.
-- No patient data or trained weights. No RN-register integration or clinical validation claimed. Existing RN and hosted instances were not modified by this publication.
+- Included authorized original weights, hash-bound calibration and experimental distal weights with provenance manifest.
+- Added two held-out real-plan comparisons, synthetic CT-like backgrounds and per-target local CI/GI/V12/D98 CSVs.
+- No source DICOMs, CT or clinical records. No RN-register integration or clinical validation claimed. Existing RN and hosted instances were not modified by this publication.

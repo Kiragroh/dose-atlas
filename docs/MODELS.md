@@ -1,12 +1,12 @@
 # Model availability, installation and training
 
-## Source-only release
+## Included research weights
 
-No patient-derived weights or clinical training data are distributed. The clean-checkout demo is an analytic synthetic illustration. An installed research model is required for predictions on uploaded contours. The public hosted demo uses its separately installed research model; it is not the weight-free local demo.
+Original trained weights are distributed with the maintainer's explicit authorization: the near-target HGB, matching empirical calibration and experimental distal HGB. Clinical training DICOMs and voxel caches are not distributed. See `artifacts/MODEL_MANIFEST.json` for exact SHA-256 hashes, variant boundaries and provenance. The GUI demo uses these weights on artificial geometry; publication examples use patient-held-out predictions instead of this all-case-trained deployment model.
 
 The runtime expects trusted authorized `artifacts/model.joblib` and a matching `artifacts/model_card.json`. For the calibrated option also supply matching `artifacts/dose_calibration.json`; it is hash-bound to the model. Never use a calibration card from a different model. Without calibration, select the regularized or raw variant rather than the calibrated default in the GUI.
 
-Joblib/pickle can execute code: inspect provenance before loading. A hash verifies identity, not trust. The pinned runtime dependency file describes the original development environment; cross-version sklearn deserialization is not guaranteed. This repository currently provides no public download of the original weights. Request distribution terms from the project maintainer or train an independently documented model on authorized data.
+Joblib/pickle can execute code: inspect provenance before loading. A hash verifies identity, not trust. The pinned runtime dependency file describes the original development environment; cross-version sklearn deserialization is not guaranteed. The supplied artifacts are covered by the repository MIT license, without clinical warranty. Their inclusion does not grant access to the source cohort.
 
 ## Training inventory
 
@@ -42,11 +42,11 @@ python overview_model.py
 
 The documented loopback launch needs no Supabase settings and no cloud account. The optional cloud modules require their own authentication/storage configuration and security review; they are not a turnkey clinical hosting service. The SQL schema is supplied for code/test completeness, not applied automatically.
 
-An optional source-only container starts the synthetic demo without weights:
+An optional container includes the near-target model and matching calibration:
 
 ```shell
 docker build -t dose-atlas .
 docker run --rm -p 127.0.0.1:18766:8000 dose-atlas
 ```
 
-For trusted model inference, mount an authorized artifacts directory read-only at `/app/artifacts`. Container execution must be validated in your target environment; local Python tests do not certify Docker or clinical deployment.
+To replace the model, mount a complete trusted artifacts directory read-only at `/app/artifacts`. Container execution must be validated in your target environment; local Python tests do not certify Docker or clinical deployment. The GUI's `/api/source` ZIP is intentionally code-only; clone this repository or use its versioned release to obtain weights.

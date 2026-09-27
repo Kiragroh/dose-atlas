@@ -21,9 +21,19 @@ Turn selected target contours and an explicit prescription into an estimated thr
 - Axial dose/isodose views, interactive target geometry, DVHs, D98/D95/Dmean/D2/V100, domain-limited conformity/gradient/V12 metrics and exploratory ring analysis.
 - Research RTDOSE/RTSTRUCT export after trained-model inference; synthetic privacy/geometry tests.
 - Near-target HGB, spatial regularization, calibration source code and the separate experimental distal-model module.
-- A **weight-free analytic synthetic demo** so a clean checkout can exercise the GUI.
+- Original trained near-target model, hash-bound calibration and separate distal-model weights; a synthetic six-target GUI demo.
 
-**Not included:** patient DICOMs, original case caches, trained patient-derived weights, credentials, clinical records or the private RN register. Structure-registered longitudinal sums and the RN head-grid integration are documented boundaries, not features of this standalone release. See [scope](docs/METHOD.md#longitudinal-rn-integration).
+**Not included:** patient DICOMs, original case caches, credentials, clinical records or the private RN register. Structure-registered longitudinal sums and the RN head-grid integration are documented boundaries, not features of this standalone release. See [scope](docs/METHOD.md#longitudinal-rn-integration).
+
+## Plan versus estimate
+
+Development provenance: **DCA, single-isocenter, C-arm / TrueBeam, Brainlab Elements 4.5**. All ten RTPLAN exports report Brainlab DosePlanning **4.5.1.318**, one isocenter and dynamic rotating beams. DCA and TrueBeam are investigator-supplied provenance, not independently established by those tags.
+
+![Eleven-target plan, held-out estimate and difference on the same four-target axial slice](docs/examples/example-a-slice.png)
+
+![Local CI, GI, V12 and target D98 for all eleven targets](docs/examples/example-a-metrics.png)
+
+**Real reference dose and patient-held-out prediction; synthetic CT-like background, not patient CT.** White contours are actual targets. The background carries no anatomical registration claim. Examples are selected by target multiplicity, not accuracy. All four metrics use full 3D volumes and common support; local V12 is not whole-brain V12. [Second example, definitions, CSVs and reproducibility](docs/EXAMPLES.md).
 
 ## Start locally
 
@@ -39,7 +49,7 @@ py -3.13 -m venv .venv
 
 On Linux/macOS use `python3.13 -m venv .venv` and `.venv/bin/python` instead. Open **http://127.0.0.1:18766** and choose **Synthetische Demo laden / Load synthetic demo**. Local use does not require a cloud account or GPU. Keep the service bound to loopback.
 
-**A clean clone does not contain a trained model.** Its demo uses an explicitly labelled analytic heuristic on six artificial targets, not the published HGB or a clinical validation case. Uploaded-case prediction fails closed without model weights; it never silently substitutes the analytic demo. For actual model inference install trusted authorized weights or train on your own authorized data: [model guide](docs/MODELS.md). The hosted service has its own model installation; hosted uploads require an approved account.
+**The clone includes the original research weights** and matching calibration. Verify [artifact hashes and provenance](artifacts/MODEL_MANIFEST.json) before loading trusted joblib files. The GUI can infer from locally uploaded authorized contours. If weights are deliberately removed, only the synthetic demo falls back to an explicitly labelled analytic heuristic; real-case inference fails closed. [Model guide](docs/MODELS.md). Hosted uploads require an approved account.
 
 ## Research workflow
 
@@ -55,7 +65,7 @@ Browser-side identifier removal is not certified anonymization. Geometry is stil
 
 Eight geometry features describe target distance, size, proximity and multiplicity. A histogram gradient boosting regressor estimates prescription-normalized dose. CT, beams, MLCs and the reference dose are not inference features. Spatial regularization, empirical calibration and distal-dose extension are separate variants with separate evidence.
 
-The original internal development series comprised **10 cases / 82 targets** with patient-wise leave-one-out evaluation. Raw target voxel MAE was **0.842 Gy**; 1-mm regularization changed it to **1.297 Gy**, while case-macro target D98 error changed from **1.877 to 0.422 Gy**. These are development-cohort findings, not external validation or metrics for the weight-free demo. See [validation and limitations](docs/VALIDATION.md).
+The original internal development series comprised **10 cases / 82 targets** with patient-wise leave-one-out evaluation. Raw target voxel MAE was **0.842 Gy**; 1-mm regularization changed it to **1.297 Gy**, while case-macro target D98 error changed from **1.877 to 0.422 Gy**. These describe raw versus regularized variants, not the additionally calibrated example variant. These are development-cohort findings, not external validation. See [validation and limitations](docs/VALIDATION.md).
 
 ## Test
 

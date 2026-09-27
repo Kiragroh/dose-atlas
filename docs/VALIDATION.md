@@ -28,6 +28,6 @@ The distal extension has separate held-out sampled-voxel results, not independen
 - Native TPS agreement for small targets and contour/source-plane edge cases.
 - Mixed Rx, larger numbers of targets and geometries outside the observed training support.
 - Uncertainty calibration, longitudinal registration and cumulative-dose validation.
-- Reproducibility of the original trained model without public weights/training data.
+- Independent reproduction of training and validation without the private source cohort. Original deployment weights are included, but clinical training data are not.
 
 Do not turn these outputs into clinical constraints, vendor rankings, optimal-plan claims or patient RN probabilities. Software tests validate implementation contracts using synthetic inputs; they do not establish medical-device approval or clinical adequacy.

@@ -1,0 +1,581 @@
+{
+  "name": "Dose Atlas geometry HGB v0.1",
+  "status": "Explorative interne LOPO-Validierung; keine klinische Freigabe",
+  "training_cases": 10,
+  "training_targets": 82,
+  "features": [
+    "signed_target_distance_mm",
+    "nearest_radius_mm",
+    "distance_over_radius",
+    "second_sphere_distance_mm",
+    "radial_overlap",
+    "target_count",
+    "total_target_cc",
+    "inside_depth_fraction"
+  ],
+  "prescription_range_Gy": [
+    18.0,
+    20.0
+  ],
+  "target_count_range": [
+    5,
+    11
+  ],
+  "target_volume_range_cc": [
+    0.109,
+    10.888
+  ],
+  "validation": {
+    "method": "Leave-one-patient-out, fixed model, equal samples per case/distance band",
+    "baseline": "Training-fold-fitted isotonic signed-distance model; fixed radial heuristic also reported",
+    "case_macro_MAE": {
+      "target": {
+        "MAE_Gy": 0.8417045712471009,
+        "baseline_MAE_Gy": 0.9689329087734222,
+        "fixed_radial_MAE_Gy": 3.452662634849548
+      },
+      "0_5mm": {
+        "MAE_Gy": 1.6142076253890991,
+        "baseline_MAE_Gy": 1.8315641045570374,
+        "fixed_radial_MAE_Gy": 1.6740086913108825
+      },
+      "5_15mm": {
+        "MAE_Gy": 1.1388700187206269,
+        "baseline_MAE_Gy": 1.3563583552837373,
+        "fixed_radial_MAE_Gy": 1.8121790885925293
+      },
+      "15_35mm": {
+        "MAE_Gy": 0.7117209434509277,
+        "baseline_MAE_Gy": 0.8383233547210693,
+        "fixed_radial_MAE_Gy": 1.3268541038036346
+      }
+    },
+    "target_D98_case_macro_MAE_Gy": 1.8767538446368595,
+    "V12_outside_targets_domain_case_MAE_cc": 2.1210999999999998,
+    "folds": [
+      {
+        "case": "C01",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 11,
+        "rx_Gy": 18.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.8257198333740234,
+            "baseline_MAE_Gy": 0.9355006217956543,
+            "fixed_radial_MAE_Gy": 2.9897451400756836,
+            "voxels": 2275
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.1937543153762817,
+            "baseline_MAE_Gy": 1.5127394199371338,
+            "fixed_radial_MAE_Gy": 1.2219758033752441,
+            "voxels": 30603
+          },
+          "5_15mm": {
+            "MAE_Gy": 0.7114911079406738,
+            "baseline_MAE_Gy": 0.9196266531944275,
+            "fixed_radial_MAE_Gy": 1.4980745315551758,
+            "voxels": 267028
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.5111512541770935,
+            "baseline_MAE_Gy": 0.6038689017295837,
+            "fixed_radial_MAE_Gy": 1.0375670194625854,
+            "voxels": 1376854
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 2.275,
+          "Paddick_CI": 1.0,
+          "GI": 4.949010989010989,
+          "V12_domain_cc": 6.98,
+          "V12_outside_targets_domain_cc": 4.705
+        },
+        "reference": {
+          "target_volume_cc": 2.275,
+          "Paddick_CI": 0.7886796785304248,
+          "GI": 4.473347547974414,
+          "V12_domain_cc": 7.436,
+          "V12_outside_targets_domain_cc": 5.1610000000000005
+        },
+        "seconds": 3.23
+      },
+      {
+        "case": "C02",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 8,
+        "rx_Gy": 20.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.8798140287399292,
+            "baseline_MAE_Gy": 1.0902597904205322,
+            "fixed_radial_MAE_Gy": 3.520524740219116,
+            "voxels": 1713
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.4257365465164185,
+            "baseline_MAE_Gy": 1.8884844779968262,
+            "fixed_radial_MAE_Gy": 1.4580978155136108,
+            "voxels": 22613
+          },
+          "5_15mm": {
+            "MAE_Gy": 0.9541609287261963,
+            "baseline_MAE_Gy": 1.3491497039794922,
+            "fixed_radial_MAE_Gy": 1.3707399368286133,
+            "voxels": 189110
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.5466728806495667,
+            "baseline_MAE_Gy": 0.751061737537384,
+            "fixed_radial_MAE_Gy": 0.9366644024848938,
+            "voxels": 1028426
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 1.713,
+          "Paddick_CI": 1.0,
+          "GI": 5.092235843549329,
+          "V12_domain_cc": 6.6290000000000004,
+          "V12_outside_targets_domain_cc": 4.916
+        },
+        "reference": {
+          "target_volume_cc": 1.713,
+          "Paddick_CI": 0.7998733199755724,
+          "GI": 4.259365994236311,
+          "V12_domain_cc": 6.436,
+          "V12_outside_targets_domain_cc": 4.723
+        },
+        "seconds": 2.98
+      },
+      {
+        "case": "C03",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 5,
+        "rx_Gy": 20.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 1.1699129343032837,
+            "baseline_MAE_Gy": 1.1902729272842407,
+            "fixed_radial_MAE_Gy": 3.694674015045166,
+            "voxels": 1502
+          },
+          "0_5mm": {
+            "MAE_Gy": 2.1498610973358154,
+            "baseline_MAE_Gy": 2.2147326469421387,
+            "fixed_radial_MAE_Gy": 2.073580265045166,
+            "voxels": 15615
+          },
+          "5_15mm": {
+            "MAE_Gy": 1.1316920518875122,
+            "baseline_MAE_Gy": 1.5313429832458496,
+            "fixed_radial_MAE_Gy": 1.5871156454086304,
+            "voxels": 119140
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.572575569152832,
+            "baseline_MAE_Gy": 0.796718955039978,
+            "fixed_radial_MAE_Gy": 0.9740848541259766,
+            "voxels": 772999
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 1.502,
+          "Paddick_CI": 0.9572976418100702,
+          "GI": 4.374123645634162,
+          "V12_domain_cc": 5.067,
+          "V12_outside_targets_domain_cc": 3.565
+        },
+        "reference": {
+          "target_volume_cc": 1.502,
+          "Paddick_CI": 0.7386808793200974,
+          "GI": 4.325065963060686,
+          "V12_domain_cc": 5.724,
+          "V12_outside_targets_domain_cc": 4.222
+        },
+        "seconds": 2.39
+      },
+      {
+        "case": "C04",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 6,
+        "rx_Gy": 20.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 1.1147547960281372,
+            "baseline_MAE_Gy": 1.0931546688079834,
+            "fixed_radial_MAE_Gy": 3.8586463928222656,
+            "voxels": 5464
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.9183049201965332,
+            "baseline_MAE_Gy": 2.1637074947357178,
+            "fixed_radial_MAE_Gy": 2.032808303833008,
+            "voxels": 30443
+          },
+          "5_15mm": {
+            "MAE_Gy": 1.2610541582107544,
+            "baseline_MAE_Gy": 1.5739963054656982,
+            "fixed_radial_MAE_Gy": 1.6834360361099243,
+            "voxels": 190525
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.7210133075714111,
+            "baseline_MAE_Gy": 0.80892413854599,
+            "fixed_radial_MAE_Gy": 1.0665583610534668,
+            "voxels": 1173884
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 5.464,
+          "Paddick_CI": 0.8536166224027496,
+          "GI": 3.2023121387283235,
+          "V12_domain_cc": 15.348,
+          "V12_outside_targets_domain_cc": 9.884
+        },
+        "reference": {
+          "target_volume_cc": 5.464,
+          "Paddick_CI": 0.7659967044197422,
+          "GI": 3.758078730904818,
+          "V12_domain_cc": 18.23,
+          "V12_outside_targets_domain_cc": 12.766
+        },
+        "seconds": 3.78
+      },
+      {
+        "case": "C05",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 11,
+        "rx_Gy": 18.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.8339390158653259,
+            "baseline_MAE_Gy": 0.9030068516731262,
+            "fixed_radial_MAE_Gy": 3.251661777496338,
+            "voxels": 3945
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.3630025386810303,
+            "baseline_MAE_Gy": 1.4607270956039429,
+            "fixed_radial_MAE_Gy": 1.5306769609451294,
+            "voxels": 38172
+          },
+          "5_15mm": {
+            "MAE_Gy": 1.0849463939666748,
+            "baseline_MAE_Gy": 1.1844433546066284,
+            "fixed_radial_MAE_Gy": 2.297743558883667,
+            "voxels": 292796
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.6473758220672607,
+            "baseline_MAE_Gy": 0.7289519906044006,
+            "fixed_radial_MAE_Gy": 1.587112307548523,
+            "voxels": 1314843
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 3.9450000000000003,
+          "Paddick_CI": 0.9962121212121212,
+          "GI": 5.126767676767677,
+          "V12_domain_cc": 11.927,
+          "V12_outside_targets_domain_cc": 7.982
+        },
+        "reference": {
+          "target_volume_cc": 3.9450000000000003,
+          "Paddick_CI": 0.7677670583203532,
+          "GI": 4.316114878340646,
+          "V12_domain_cc": 12.378,
+          "V12_outside_targets_domain_cc": 8.433
+        },
+        "seconds": 3.14
+      },
+      {
+        "case": "C06",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 6,
+        "rx_Gy": 18.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.6152999401092529,
+            "baseline_MAE_Gy": 0.8162811398506165,
+            "fixed_radial_MAE_Gy": 3.2142412662506104,
+            "voxels": 8029
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.436074137687683,
+            "baseline_MAE_Gy": 1.6785868406295776,
+            "fixed_radial_MAE_Gy": 1.5393437147140503,
+            "voxels": 34981
+          },
+          "5_15mm": {
+            "MAE_Gy": 1.1276911497116089,
+            "baseline_MAE_Gy": 1.213663935661316,
+            "fixed_radial_MAE_Gy": 1.662597417831421,
+            "voxels": 209148
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.7260247468948364,
+            "baseline_MAE_Gy": 0.7445694208145142,
+            "fixed_radial_MAE_Gy": 1.34820556640625,
+            "voxels": 1185850
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 8.029,
+          "Paddick_CI": 0.8964939705225548,
+          "GI": 2.9706342117016526,
+          "V12_domain_cc": 17.963,
+          "V12_outside_targets_domain_cc": 9.934000000000001
+        },
+        "reference": {
+          "target_volume_cc": 8.029,
+          "Paddick_CI": 0.8404738929705884,
+          "GI": 3.358326068003487,
+          "V12_domain_cc": 18.882,
+          "V12_outside_targets_domain_cc": 10.853
+        },
+        "seconds": 3.65
+      },
+      {
+        "case": "C07",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 11,
+        "rx_Gy": 20.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.9251261353492737,
+            "baseline_MAE_Gy": 0.9719699621200562,
+            "fixed_radial_MAE_Gy": 3.71871280670166,
+            "voxels": 6321
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.8795229196548462,
+            "baseline_MAE_Gy": 1.9558435678482056,
+            "fixed_radial_MAE_Gy": 1.980431318283081,
+            "voxels": 48196
+          },
+          "5_15mm": {
+            "MAE_Gy": 1.2410615682601929,
+            "baseline_MAE_Gy": 1.3561499118804932,
+            "fixed_radial_MAE_Gy": 2.1509976387023926,
+            "voxels": 323566
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.8090791702270508,
+            "baseline_MAE_Gy": 0.9652716517448425,
+            "fixed_radial_MAE_Gy": 1.7808871269226074,
+            "voxels": 1859307
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 6.321,
+          "Paddick_CI": 0.9478182636077372,
+          "GI": 4.3076923076923075,
+          "V12_domain_cc": 20.417,
+          "V12_outside_targets_domain_cc": 14.096
+        },
+        "reference": {
+          "target_volume_cc": 6.321,
+          "Paddick_CI": 0.7555949140333613,
+          "GI": 4.0467778054242345,
+          "V12_domain_cc": 23.187,
+          "V12_outside_targets_domain_cc": 16.866
+        },
+        "seconds": 4.9
+      },
+      {
+        "case": "C08",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 10,
+        "rx_Gy": 18.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.7345513105392456,
+            "baseline_MAE_Gy": 1.0925521850585938,
+            "fixed_radial_MAE_Gy": 3.201322078704834,
+            "voxels": 23651
+          },
+          "0_5mm": {
+            "MAE_Gy": 2.106309413909912,
+            "baseline_MAE_Gy": 2.534475326538086,
+            "fixed_radial_MAE_Gy": 2.0885543823242188,
+            "voxels": 70282
+          },
+          "5_15mm": {
+            "MAE_Gy": 1.8598304986953735,
+            "baseline_MAE_Gy": 2.2772772312164307,
+            "fixed_radial_MAE_Gy": 2.6701087951660156,
+            "voxels": 347843
+          },
+          "15_35mm": {
+            "MAE_Gy": 1.2557319402694702,
+            "baseline_MAE_Gy": 1.4664478302001953,
+            "fixed_radial_MAE_Gy": 2.015256881713867,
+            "voxels": 1551590
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 23.651,
+          "Paddick_CI": 0.9459264888213414,
+          "GI": 2.708874935007799,
+          "V12_domain_cc": 46.195,
+          "V12_outside_targets_domain_cc": 22.544
+        },
+        "reference": {
+          "target_volume_cc": 23.651,
+          "Paddick_CI": 0.8105459216320294,
+          "GI": 3.678981297818079,
+          "V12_domain_cc": 57.937000000000005,
+          "V12_outside_targets_domain_cc": 34.286
+        },
+        "seconds": 4.09
+      },
+      {
+        "case": "C09",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 8,
+        "rx_Gy": 18.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.6402478218078613,
+            "baseline_MAE_Gy": 0.7718473672866821,
+            "fixed_radial_MAE_Gy": 3.230421543121338,
+            "voxels": 10185
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.377227544784546,
+            "baseline_MAE_Gy": 1.4491846561431885,
+            "fixed_radial_MAE_Gy": 1.45145583152771,
+            "voxels": 47297
+          },
+          "5_15mm": {
+            "MAE_Gy": 1.030185580253601,
+            "baseline_MAE_Gy": 1.0956385135650635,
+            "fixed_radial_MAE_Gy": 1.667609691619873,
+            "voxels": 285471
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.7016662955284119,
+            "baseline_MAE_Gy": 0.797016441822052,
+            "fixed_radial_MAE_Gy": 1.2105697393417358,
+            "voxels": 1497998
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 10.185,
+          "Paddick_CI": 0.8864229765013055,
+          "GI": 3.137075718015666,
+          "V12_domain_cc": 23.733,
+          "V12_outside_targets_domain_cc": 13.548
+        },
+        "reference": {
+          "target_volume_cc": 10.185,
+          "Paddick_CI": 0.8504373470980762,
+          "GI": 3.322195290858726,
+          "V12_domain_cc": 24.268,
+          "V12_outside_targets_domain_cc": 14.083
+        },
+        "seconds": 4.76
+      },
+      {
+        "case": "C10",
+        "held_out_patients": 1,
+        "training_patients": 9,
+        "targets": 6,
+        "rx_Gy": 20.0,
+        "bands": {
+          "target": {
+            "MAE_Gy": 0.6776798963546753,
+            "baseline_MAE_Gy": 0.8244835734367371,
+            "fixed_radial_MAE_Gy": 3.8466765880584717,
+            "voxels": 5565
+          },
+          "0_5mm": {
+            "MAE_Gy": 1.2922828197479248,
+            "baseline_MAE_Gy": 1.4571595191955566,
+            "fixed_radial_MAE_Gy": 1.3631625175476074,
+            "voxels": 29435
+          },
+          "5_15mm": {
+            "MAE_Gy": 0.9865867495536804,
+            "baseline_MAE_Gy": 1.0622949600219727,
+            "fixed_radial_MAE_Gy": 1.53336763381958,
+            "voxels": 193410
+          },
+          "15_35mm": {
+            "MAE_Gy": 0.625918447971344,
+            "baseline_MAE_Gy": 0.7204024791717529,
+            "fixed_radial_MAE_Gy": 1.3116347789764404,
+            "voxels": 1150697
+          }
+        },
+        "predicted": {
+          "target_volume_cc": 5.565,
+          "Paddick_CI": 0.9494966729227095,
+          "GI": 3.351475857362225,
+          "V12_domain_cc": 15.106,
+          "V12_outside_targets_domain_cc": 9.541
+        },
+        "reference": {
+          "target_volume_cc": 5.565,
+          "Paddick_CI": 0.8345345153006867,
+          "GI": 3.1936225663038478,
+          "V12_domain_cc": 15.712,
+          "V12_outside_targets_domain_cc": 10.147
+        },
+        "seconds": 3.74
+      }
+    ]
+  },
+  "model_parameters": {
+    "categorical_features": "from_dtype",
+    "early_stopping": false,
+    "interaction_cst": null,
+    "l2_regularization": 10,
+    "learning_rate": 0.075,
+    "loss": "squared_error",
+    "max_bins": 255,
+    "max_depth": null,
+    "max_features": 1.0,
+    "max_iter": 90,
+    "max_leaf_nodes": 15,
+    "min_samples_leaf": 80,
+    "monotonic_cst": null,
+    "n_iter_no_change": 10,
+    "quantile": null,
+    "random_state": 20260920,
+    "scoring": "loss",
+    "tol": 1e-07,
+    "validation_fraction": 0.1,
+    "verbose": 0,
+    "warm_start": false
+  },
+  "grid_mm": 1,
+  "padding_mm": 35,
+  "limitations": [
+    "Zehn retrospektive Fälle eines Referenz-Workflows; keine unabhängige externe Validierung.",
+    "Keine Aussage zur Überlegenheit einer Software oder zur erreichbaren optimalen Dosis.",
+    "Nur kranielle SRS, eine Fraktion und eine gemeinsame Zielverschreibung.",
+    "Kein CT, keine Strahlrichtungen, keine Maschine: keine physikalische Dosisberechnung oder ausführbare Optimierung.",
+    "OAR-Geometrie wird ausgewertet, aber nicht als Modellmerkmal gelernt; OAR-Konflikte sind nicht modelliert.",
+    "1-mm-Raster und Kontur-Slab-Modell: kleine Ziele und native TPS-DVH können deutlich abweichen.",
+    "35-mm-Zielumgebung: V12 ist ein begrenztes Domänenvolumen, kein automatisch vollständiges Hirn-V12.",
+    "Die lokale Fallserie dient der Modellentwicklung; LOPO bleibt explorativ.",
+    "LOPO-Fehler sind deskriptiv und keine kalibrierten individuellen Unsicherheitsintervalle."
+  ],
+  "runtime": {
+    "python": "3.13.13",
+    "numpy": "2.4.4",
+    "sklearn": "1.9.1",
+    "pydicom": "2.4.5"
+  },
+  "source": "Ten authorized Elements exports, resolved dose-plan-structure references; source hashes in protected manifest"
+}

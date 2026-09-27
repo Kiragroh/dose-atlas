@@ -1,0 +1,99 @@
+{
+  "version": "overview-distal-hgb-v1",
+  "training_cases": 10,
+  "training_sources": "Existing original ten-case caches; no new register case or outcome data added. Register/training overlap is not an independent validation cohort.",
+  "cache_sha256": {
+    "C01": "ee61324c4e9f42fe6abc6486cf12acb9e856946a09f89cdf3bdf0a9a032f02ec",
+    "C02": "e63007559f9293298581b59d110e9307f2631609f83785f3eb142d1ee329b3d2",
+    "C03": "6fbcc464be7194175af6c7a23d91c88dd4f8ad4cb9264a16be56499c8fec3c6a",
+    "C04": "427bdce4a5724221e5285a074a2c9e410ce52b99f04c785d8303e3dbf37ef4a7",
+    "C05": "a85923b35ee1ffbb0671c17794ee5fdbdc57d4d06ad1af85b2e34daf8b105a7a",
+    "C06": "07d9a263d2bdcf7c6512a905d0e4f626161cf7ca902a7d55cef79bba3f83bcb4",
+    "C07": "90eb5e2aacc687c2931afe2013ffdbe5a413ff8d1225d370c2d5ce53773ecf40",
+    "C08": "22ab9747924151208635d8dcda3f256ba7fddb4c7e05b1428108313db438f140",
+    "C09": "e0f38ad378cca22aa4b43aad66fd43dfcc28433ea83400134bab005b5aab20b3",
+    "C10": "4b47eaa69f75834b4aadb8b3221a5a0b34da18319d951c93c93a1f312b3a9b53"
+  },
+  "blend_mm": [
+    30.0,
+    45.0
+  ],
+  "sampled_distance_range_mm": [
+    25.01470184326172,
+    135.75343322753906
+  ],
+  "validation": {
+    "method": "leave-one-original-case-out, distal model only, sampled voxels",
+    "folds": [
+      {
+        "case": 1,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.006559148896485567,
+        "samples_beyond_45mm": 7156
+      },
+      {
+        "case": 2,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.0073251319117844105,
+        "samples_beyond_45mm": 10226
+      },
+      {
+        "case": 3,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.009427511133253574,
+        "samples_beyond_45mm": 7866
+      },
+      {
+        "case": 4,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.010669335722923279,
+        "samples_beyond_45mm": 10323
+      },
+      {
+        "case": 5,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.00807244423776865,
+        "samples_beyond_45mm": 8040
+      },
+      {
+        "case": 6,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.00877617858350277,
+        "samples_beyond_45mm": 10318
+      },
+      {
+        "case": 7,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.008855839259922504,
+        "samples_beyond_45mm": 10245
+      },
+      {
+        "case": 8,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.018181495368480682,
+        "samples_beyond_45mm": 10156
+      },
+      {
+        "case": 9,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.010976440273225307,
+        "samples_beyond_45mm": 10285
+      },
+      {
+        "case": 10,
+        "held_out_case": true,
+        "relative_dose_MAE_beyond_45mm": 0.00951747503131628,
+        "samples_beyond_45mm": 10280
+      }
+    ]
+  },
+  "research_only": true,
+  "clinical_validation": false,
+  "limitations": [
+    "No independent full-organ DVH validation.",
+    "Near model retained through 30 mm; blended with distal surrogate through 45 mm.",
+    "No learned OAR sparing, beam geometry, patient density, or physical transport.",
+    "Distance or case geometry outside training support is unvalidated extrapolation.",
+    "Cannot interpret these values as clinical organ tolerance or RN probability."
+  ]
+}

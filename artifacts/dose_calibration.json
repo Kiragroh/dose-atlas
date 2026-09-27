@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "name": "Empirical dose-level calibration v1",
+  "scale": 1.04,
+  "sigma_mm": 1.0,
+  "model_sha256": "b41ed8e7c8d88167ce0fccc6efa0838c53e4416b2d63cc61bb6012c77af9fcb4",
+  "cases": 10,
+  "targets": 82,
+  "method": "Outer leave-one-patient-out: HGB and scalar calibration fit on nine training cases only; Three inner case folds (6 training, 3 calibration patients) produce calibration fields. No outer test patient enters any inner fit or selection. Test reference is evaluated only after selection. Exploratory development cohort; not external validation.",
+  "deployment_fit": "Scalar selected from all development-case LOPO fields; base HGB trained on all ten cases.",
+  "constraints": "On inner calibration cases: D98 case-macro MAE increase <=0.10 Gy, GI/V12/coverage MAE no worse. Fixed candidate scale grid 1.00..1.08 step0.01. These are development selection rules, not clinical tolerances.",
+  "validation": {
+    "before": {
+      "inverse_CI": 1.0663351111793327,
+      "GI": 4.788230651444017,
+      "below_1_1": 69,
+      "D98_MAE_Gy": 0.4280538558959961,
+      "V12_MAE_cc": 0.2652439024390244,
+      "Dmean_MAE_Gy": 1.353137434982672,
+      "coverage_MAE_percentage_points": 3.289426812132864,
+      "CI_MAE": 0.2137694311464143,
+      "GI_MAE": 0.8502067451172977
+    },
+    "after": {
+      "inverse_CI": 1.0976602536267208,
+      "GI": 4.584917331497455,
+      "below_1_1": 48,
+      "D98_MAE_Gy": 0.49886177807319454,
+      "V12_MAE_cc": 0.21354878048780487,
+      "Dmean_MAE_Gy": 0.7012741274949981,
+      "coverage_MAE_percentage_points": 1.4019307062663273,
+      "CI_MAE": 0.1855492434436971,
+      "GI_MAE": 0.707442026491553
+    },
+    "reference": {
+      "inverse_CI": 1.280104542325747,
+      "GI": 4.239173511539543,
+      "below_1_1": 1,
+      "D98_MAE_Gy": 0.0,
+      "V12_MAE_cc": 0.0,
+      "Dmean_MAE_Gy": 0.0,
+      "coverage_MAE_percentage_points": 0.0,
+      "CI_MAE": 0.0,
+      "GI_MAE": 0.0
+    }
+  },
+  "case_macro_MAE": {
+    "before": {
+      "inverse_CI": 0.2101963186138142,
+      "GI": 0.8314274625569513,
+      "V12_cc": 0.2555087121212121,
+      "D98_Gy": 0.42211526336091937,
+      "coverage_fraction": 0.03487354644087641,
+      "Dmean_Gy": 1.3816446367899577
+    },
+    "after": {
+      "inverse_CI": 0.18580498956427055,
+      "GI": 0.681073988080611,
+      "V12_cc": 0.2043780303030303,
+      "D98_Gy": 0.5093912516218243,
+      "coverage_fraction": 0.014847328987268297,
+      "Dmean_Gy": 0.7242833308017615
+    }
+  },
+  "fold_scales": {
+    "C01": 1.03,
+    "C02": 1.03,
+    "C03": 1.04,
+    "C04": 1.04,
+    "C05": 1.04,
+    "C06": 1.04,
+    "C07": 1.04,
+    "C08": 1.04,
+    "C09": 1.04,
+    "C10": 1.04
+  },
+  "limitations": [
+    "Exploratory development series after identifying bias; no independent external validation.",
+    "Scalar changes the whole predicted field; no CI floor or fitting to the uploaded reference.",
+    "Conformity optimism remains; not a deliverable optimum or proof of inferior reference planning.",
+    "Individual D98 errors may increase; heterogeneous prescriptions and 24-target cases are extrapolations."
+  ]
+}

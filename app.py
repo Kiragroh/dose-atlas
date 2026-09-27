@@ -155,7 +155,7 @@ def source():
           'dose_calibration.py','overview_model.py','validate_calibration.py','test_overview_model.py',
           'CITATION.cff','SECURITY.md','CHANGELOG.md','artifacts/README.md',
           'docs/assets/dose-atlas-banner.png','docs/assets/method-principle.png','docs/assets/PROVENANCE.md')]
-    for folder,pattern in (('static','**/*'),('tests','*.py'),('tests','*.cjs'),('docs','*.md'),('deploy','*.sql'),('deploy','*.py')):
+    for folder,pattern in (('static','**/*'),('tests','*.py'),('tests','*.cjs'),('docs','*.md'),('deploy','*.sql'),('deploy','*.py'),('scripts','*.py'),('docs/examples','*.png'),('docs/examples','*.svg'),('docs/examples','*.csv'),('docs/examples','*.json')):
         files.extend((ROOT/folder).glob(pattern))
     buffer=BytesIO()
     with zipfile.ZipFile(buffer,'w',zipfile.ZIP_DEFLATED) as archive:

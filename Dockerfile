@@ -7,7 +7,7 @@ COPY *.py ./
 COPY static ./static
 COPY docs ./docs
 COPY README.md LICENSE CITATION.cff SECURITY.md CHANGELOG.md ./
-RUN mkdir -p artifacts && chown researcher:researcher artifacts
+COPY artifacts/model.joblib artifacts/model_card.json artifacts/dose_calibration.json artifacts/MODEL_MANIFEST.json ./artifacts/
 USER researcher
 EXPOSE 8000
 CMD ["python", "-m", "uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--no-access-log", "--limit-concurrency", "32"]
