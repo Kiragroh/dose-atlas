@@ -60,7 +60,7 @@ The original internal development series comprised **10 cases / 82 targets** wit
 ## Test
 
 ```powershell
-python -m pip install -r requirements-runtime.txt pytest requests
+python -m pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 

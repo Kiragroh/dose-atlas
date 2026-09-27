@@ -151,7 +151,7 @@ def source():
     files=[ROOT/n for n in ('app.py','job_queue.py','auth_activation.py','cloud_api.py','storage.py','dose_export.py','geometry.py','model.py',
           'metrics.py','upload.py','local_cases.py','train.py','check_resolution.py','verify_real.py',
           'verify_uploads.py','verify_hosted.py','evaluate_continuity.py','build_package.py','README.md','LICENSE','Dockerfile',
-          '.dockerignore','.gitignore','requirements.txt','requirements-runtime.txt','start.ps1',
+          '.dockerignore','.gitignore','requirements.txt','requirements-runtime.txt','requirements-dev.txt','start.ps1',
           'dose_calibration.py','overview_model.py','validate_calibration.py','test_overview_model.py',
           'CITATION.cff','SECURITY.md','CHANGELOG.md','artifacts/README.md',
           'docs/assets/dose-atlas-banner.png','docs/assets/method-principle.png','docs/assets/PROVENANCE.md')]
